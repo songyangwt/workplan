@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<package name="wctj_default" extends="struts-default" >
+		
+		<action name="showchuwctj" class="train.wctj.action.ShowChuWctj">
+			<result name="success">/page/wctj/ShowChuData.jsp</result>		
+		</action>
+		<action name="showpersonwctj" class="train.wctj.action.ShowPersonWctj">
+			<result name="success">/page/wctj/ShowPersonData.jsp</result>		
+		</action>
+		<action name="showglobledata" class="train.wctj.action.ShowGlobleData">
+			<result name="globalall">/page/wctj/ShowGlobalData.jsp</result>	
+			<result name="globalzu">/page/wctj/GlobalDataZu.jsp</result>	
+			<result name="globalperson">/page/wctj/GlobalDataPerson.jsp</result>		
+		</action>
+		<action name="showglobaldetail" class="train.wctj.action.ShowGlobalDetail">
+			<result name="success">/page/wctj/GlobalDetail.jsp</result>		
+		</action>
+		<action name="showmodifypage" class="train.wctj.action.ShowModifyPage">
+			<result name="success">/page/wctj/ModifyPage.jsp</result>		
+		</action>
+		<action name="submodify" class="train.wctj.action.SubModify">
+			<result name="success">/page/wctj/ModfiySuccess.jsp</result>	
+			<result name="failed">/page/public/error.jsp</result>	
+		</action>
+		<action name="showmyshenpi" class="train.wctj.action.ShowMyShenpi">
+			<result name="success">/page/wctj/ShowMyShenpi.jsp</result>		
+		</action>
+		<action name="showmodifydetail" class="train.wctj.action.ShowModifyDetail">
+			<result name="success">/page/wctj/ModifyDetail.jsp</result>		
+		</action>
+		<action name="showallshenpi" class="train.wctj.action.ShowAllShenpi">
+			<result name="success">/page/wctj/ShowAllShenpi.jsp</result>		
+		</action>
+		<action name="showshenpidata" class="train.wctj.action.ShowShenpiData">
+			<result name="success">/page/wctj/ShowShenpiData.jsp</result>		
+		</action>
+		<action name="showshenpidetail" class="train.wctj.action.ShowShenpiDetail">
+			<result name="success">/page/wctj/ShenpiDetail.jsp</result>		
+		</action>
+		<action name="shenpi" class="train.wctj.action.Shenpi">
+			<result name="success">/page/wctj/ShenpiSuccess.jsp</result>		
+		</action>
+		<action name="importwctj" class="train.wctj.action.ImportWctj">
+			<result name="success">/page/wctj/ImportSuccess.jsp</result>		
+		</action>
+		<action name="importjiediao" class="train.wctj.action.ImportJiediao">
+			<result name="success">/page/wctj/ImportSuccess.jsp</result>		
+		</action>
+		<action name="importleaveinfo" class="train.wctj.action.ImportLeaveinfo">
+			<result name="success">/page/wctj/ImportSuccess.jsp</result>		
+		</action>
+		<action name="deletemodifypage" class="train.wctj.action.DeleteModifyPage">
+			<result name="success">/page/wctj/DeleteSuccess.jsp</result>		
+		</action>
+		<action name="finddetailbyname" class="train.wctj.action.FindDetailByName">
+			<result name="success">/page/wctj/FindByNameList.jsp</result>		
+		</action>
+		<action name="finddetailbyzu" class="train.wctj.action.FindDetailByZu">
+			<result name="success">/page/wctj/FindByZuList.jsp</result>		
+		</action>
+		<action name="showalldata" class="train.wctj.action.ShowAllData">
+			<result name="success">/page/wctj/AllDataShow.jsp</result>		
+		</action>
+		<action name="showdetail" class="train.wctj.action.ShowDetail">
+			<result name="success1">/page/wctj/ZhongXinDetail.jsp</result>	
+			<result name="success2">/page/wctj/ChengKaiDetail.jsp</result>		
+		</action>
+		<action name="showleavedetail" class="train.wctj.action.ShowLeaveDetail">
+			<result name="success">/page/wctj/XiuJiaDetail.jsp</result>		
+		</action>
+		<action name="showcitydetail" class="train.wctj.action.ShowCityDetail">
+			<result name="success">/page/wctj/WaiChuDetail.jsp</result>		
+		</action>
+		<action name="showpersonjiediaodetail" class="train.wctj.action.ShowPersonJieDiaoDetail">
+			<result name="success">/page/wctj/JieDiaoDetail.jsp</result>		
+		</action>
+		<action name="showpersonleavedetail" class="train.wctj.action.ShowPersonLeaveDetail">
+			<result name="success">/page/wctj/XiuJiaDetail.jsp</result>		
+		</action>
+		<action name="showpersondata" class="train.wctj.action.ShowPersonData">
+			<result name="success">/page/wctj/FindByNameList.jsp</result>	
+		</action>
+		<action name="showmodifyrecordpage" class="train.wctj.action.ShowModifyRecordPage">
+			<result name="success">/page/wctj/ModifyRecordPage.jsp</result>	
+		</action>
+		<action name="submodifyrecord" class="train.wctj.action.SubModifyRecord">
+			<result name="success">/page/wctj/ModifyRecordSuccess.jsp</result>	
+		</action>
+		<action name="showleavedata" class="train.wctj.action.ShowLeaveData">
+			<result name="success">/page/wctj/ShowLeaveData.jsp</result>	
+		</action>
+		<action name="showleavemodifypage" class="train.wctj.action.ShowLeaveModifyPage">
+			<result name="success">/page/wctj/LeaveModifyPage.jsp</result>	
+		</action>
+		<action name="subleavemodify" class="train.wctj.action.SubLeaveModify">
+			<result name="success">/page/wctj/LeaveModifySuccess.jsp</result>	
+		</action>
+		
+		<action name="showjiediaodata" class="train.wctj.action.ShowJieDiaoData">
+			<result name="success">/page/wctj/ShowJieDiaoData.jsp</result>	
+		</action>
+		<action name="showjiediaomodifypage" class="train.wctj.action.ShowJieDiaoModifyPage">
+			<result name="success">/page/wctj/JieDiaoModifyPage.jsp</result>	
+		</action>
+		<action name="subjiediaomodify" class="train.wctj.action.SubJieDiaoModify">
+			<result name="success">/page/wctj/JieDiaoModifySuccess.jsp</result>	
+		</action>
+	</package>
+</struts>    

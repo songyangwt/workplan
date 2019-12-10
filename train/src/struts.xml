@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+    <constant name="struts.multipart.maxSize" value="100000000"/>
+	<!-- 引入其他配置文件  -->
+	<!-- <include file="work/userinfo/action/userinfo_struts.xml"></include> -->
+	<include file="train/userinfo/action/userinfo_struts.xml"></include>
+	<include file="train/mycalendar/action/mycalendar_struts.xml"></include>
+	<include file="train/wctj/action/wctj_struts.xml"></include>
+	<include file="train/log/action/log_struts.xml"></include>
+</struts>

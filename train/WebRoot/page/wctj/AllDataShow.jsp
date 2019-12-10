@@ -1,0 +1,281 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fb" uri="http://template.fb.com/article/taglib"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    <script language="javascript" type="text/javascript" src="<%=path%>/js/My97DatePicker/WdatePicker.js"></script>
+    <title>My JSP 'authorityfailed.jsp' starting page</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<script type="text/javascript" src="<%=path%>/js/jquery-1.2.6.js" charset= "gbk"></script>
+	
+  <style type="text/css">
+  .b {
+	font-weight:bold;
+	word-break:break-all;
+	}
+	.cb {
+	text-align: center;
+	font-weight:bold;
+	word-break:break-all;
+	}
+	.c {
+	text-align: center;
+	word-break:break-all;
+	}
+	.o{
+	word-break:break-all;
+	}
+	
+	
+b{
+	color:red;
+}
+  </style>
+  
+  <script type="text/javascript">
+$(document).ready(function(){ 
+
+$("tr.btbj:odd").css({"background-color":"#F0F0F0","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
+$("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
+   var length1=document.getElementById("listcity").value;
+   var length2=document.getElementById("listjiediao").value;
+ 
+   if(Number(length1)!=0)
+   {
+    length1=Number(length1)>3?Number(length1):3;
+   	 document.getElementById("scroll1").style.height=Number(length1)*30+'px';
+   	 //alert(Number(length1)*30+'px');
+   }
+   if(Number(length2)!=0)
+   {
+	   length2=Number(length2)>3?Number(length2):3;
+   	 document.getElementById("scroll2").style.height=Number(length2)*30+'px';
+   	 //alert(Number(length2)*30+'px');
+   }
+  
+ 
+   if(Number(length1)>8)
+     {
+     	document.getElementById("scroll1").style.height='240px';
+     	//alert("450px");
+     }
+  if(Number(length2)>8)
+     {
+     	document.getElementById("scroll2").style.height='240px';
+     	 //alert("450px");
+     }
+ 
+ });
+ 
+ function findbyname()
+{
+	 var name=document.getElementById("name").value;
+	
+	window.location = "<%=path%>/finddetailbyname.action?name="+name;
+}
+function findbyzu()
+{
+	var zu=document.getElementById("zu").value;
+	
+	window.location = "<%=path%>/finddetailbyzu.action?zu="+zu;
+}
+function detail1()
+{
+	
+	window.location = "<%=path%>/showdetail.action?type=1";
+}
+function detail2()
+{
+	
+	window.location = "<%=path%>/showdetail.action?type=2";
+}
+function detail3()
+{
+	
+	window.location = "<%=path%>/showleavedetail.action";
+}
+ </script>
+ 
+ 
+ 
+  </head>
+  
+  <body>
+    <form  action="" method="post">
+    <br><br>
+    	  <p align="center" style="padding:0px;margin:0px; font-size: 28px;"><strong>研发支持二处员工分布情况</strong></p><br>
+    	    <p align="center" style="padding:0px;margin:0px; font-size: 20px;">姓名 :<input  style="width: 150px;" type="text" name="name" id="name"/><input type="button" value="查询" onclick="findbyname()"/>&nbsp;&nbsp;&nbsp;&nbsp;小组:	<select id="zu" name="zu" style="width: 180px">
+										<option value="wu">-请选择小组-</option>
+										<option value="1">测试管理组</option>
+										<option value="2">需求管理组</option>
+										<option value="3">上线支持组</option>
+										<option value="4">体验推广组</option>
+										
+										
+						</select>
+    				<input type="button" value="查询" onclick="findbyzu()"/></p>  
+
+    	        <br><br>
+    	  
+          <div style="width:1000px; margin:0 auto;" >    
+           <p align="left" style="padding:0px;margin:0px; font-size: 18px;"><strong>处室共有：${numtype1+numtype2+numtype3+numtype4+numtype5}人</strong></p><br>                        
+           <div  style="width:300px; height:150px;float:left; border:1px solid black; margin:0px 30px 30px 0px;">
+            <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>川投大厦</strong></p><br>
+             <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日共有：${numtype1}人<br><br><input type="button" value="查看详情" onclick="detail1()"/></p><br> 
+           </div>   
+           
+            <div style="width:300px; height:150px;float:left; border:1px solid black; margin:0px 30px 30px 0px;" >
+            <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>航天办公</strong></p><br>
+             <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日共有：${numtype2}人<br><br><input type="button" value="查看详情" onclick="detail2()"/></p><br> 
+           </div>
+             <div style="width:300px; height:150px;float:left; border:1px solid black; margin:0px 30px 30px 0px;">
+            <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>休假</strong></p><br>
+             <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日共有：${numtype3}人<br><br><input type="button" value="查看详情" onclick="detail3()"/></p><br> 
+           </div>
+            
+           </div>
+           
+           <div style="width:1000px; margin:0 auto;" >  
+              <div style="width:965px; float:left; height:300px; border:1px solid black; ">
+            <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>外出</strong></p><br>
+             <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日共有：${numtype4}人<br><br>
+               <c:if test="${fn:length(listcity)!=0}">  
+			           
+				
+			        	<table  align="center" style="border: 0px; " cellpadding="0" cellspacing="2" >
+			        	<tr height="20px" class="表格表头背景1" id="hang">
+						
+							<td  width="150px" align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>城市</p>
+								</div></td>
+						   <td  width="150px" align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>人数</p>
+								</div></td>
+							<td  width="150px"  align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>操作</p>
+								</div></td>	
+							
+																	
+						</tr>
+			        	</table>
+			         <div id="scroll1" align="center" style="overflow-y: scroll; overflow-x: hidden;height:200px;margin-left:17px;">
+					<table  align="center" style="border: 0px; " cellpadding="0" cellspacing="2" >
+					 
+					<c:forEach items="${listcity}" var="wb" varStatus="status">
+					<tr class="btbj" id="hang" style="height:25px">
+								<td width="150px" height="25" align="center" valign="middle" nowrap><div
+										align="center">${wb.city}</div></td>
+								<td width="150px" height="25" align="center" valign="middle" nowrap><div
+										align="center">${wb.sum}</div></td>		
+								<td width="150px" height="25" align="center" valign="middle" nowrap><div
+										align="center">
+											<a href="<%=path%>/showcitydetail.action?city=${wb.city}">查看详情</a>
+										</div>
+								</td>
+							
+							        </tr>
+									</c:forEach>
+								</table>
+			                     </div>  
+			             
+			            </c:if>
+           
+           </div>   
+            <div style="width:965px; float:left; height:20px; ">
+          </div>  
+            <div  style="width:965px; float:left; height:300px; border:1px solid black; " >
+            <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>借调</strong></p><br>
+             <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日共有：${numtype5}人<br><br>
+               <c:if test="${fn:length(listjiediao)!=0}">  
+			           
+				
+					
+			        <table  align="center" style="border: 0px; " cellpadding="0" cellspacing="2" >
+			         <tr height="20px" class="表格表头背景1" id="hang">
+						
+							<td  width="100px" align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>姓名</p>
+								</div></td>
+						   <td  width="100px" align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>小组</p>
+								</div></td>
+							<td  width="150px"  align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>借调开始时间</p>
+								</div></td>	
+							<td  width="150px"  align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>借调结束时间</p>
+								</div></td>
+							<td  width="100px"  align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>借调事由</p>
+								</div></td>
+							<td  width="100px"  align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>借调地点</p>
+								</div></td>	
+							<td  width="100px"  align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>借调单位</p>
+								</div></td>
+						
+																	
+						</tr>
+			        </table>
+			         <div id="scroll2" align="center" style="overflow-y: scroll; overflow-x: hidden;height:200px;margin-left:17px;">
+					<table  align="center" style="border: 0px; " cellpadding="0" cellspacing="2" >
+				   
+							<c:forEach items="${listjiediao}" var="wc" varStatus="status">
+							<tr class="btbj" id="hang" style="height:20px">
+								
+							
+								<td width="100px" height="25" align="center" valign="middle" nowrap><div
+										align="center">${wc.name}</div></td>
+								<td width="100px" height="25" align="center" valign="middle" nowrap><div
+										align="center">${fb:zunametostring(wc.zu)}</div></td>
+								<td width="150px" height="25" align="center" valign="middle" nowrap><div
+										align="center">${wc.begindate}</div></td>
+								<td width="150px" height="25" align="center" valign="middle" nowrap><div
+										align="center">${wc.enddate}</div></td>
+								<td width="100px" height="25" align="center" valign="middle" nowrap><div
+										align="center">${wc.reason}</div></td>
+								<td width="100px" height="25" align="center" valign="middle" nowrap><div
+										align="center">${wc.location}</div></td>
+								<td width="100px" height="25" align="center" valign="middle" nowrap><div
+										align="center">${wc.department}</div></td>
+							
+						
+							</tr>
+							</c:forEach>
+								</table>
+			                     </div>  
+			             
+			            </c:if>
+           </div>
+             </div>     
+            <input type="hidden" id="listcity" name="listcity" value="${listcity}"/> 
+             <input type="hidden" id="listjiediao" name="listjiediao" value="${listjiediao}"/> 
+    </form>
+  </body>
+</html>

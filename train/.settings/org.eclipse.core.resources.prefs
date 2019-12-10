@@ -1,0 +1,9 @@
+#Wed Aug 28 22:55:16 CST 2019
+eclipse.preferences.version=1
+encoding//WebRoot/css/cccc.css=UTF-8
+encoding//src/ccb/controller/ControllerActionSupport.java=UTF-8
+encoding//src/ccb/controller/GenericControllerActionSupport.java=UTF-8
+encoding//src/ccb/service/GenericServiceImpl.java=UTF-8
+encoding//src/train/filter/AuthorityFilter.java=UTF-8
+encoding//src/train/userinfo/action/UserLogin.java=UTF-8
+encoding/<project>=UTF-8
