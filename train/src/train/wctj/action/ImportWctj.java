@@ -83,6 +83,8 @@ public String execute() throws Exception {
 					String newnumber = sheet.getCell(1, i).getContents().trim();
 			        String date = sheet.getCell(3, i).getContents().trim();
 					WorkData wd = wddao.findByDateAndNewnumber(date, newnumber);
+					if(newnumber!=""&&date!="")
+					{
 					if(wd==null)
 					{
 						 WorkData wdtemp = new WorkData();
@@ -109,6 +111,7 @@ public String execute() throws Exception {
 						 wd.setReason(sheet.getCell(7, i).getContents().trim());
 						 wd.setCity(sheet.getCell(8, i).getContents().trim() );
 						 wddao.merge(wd);
+					}
 					}
 			
 					}

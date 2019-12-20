@@ -71,7 +71,10 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 									<p>小组</p>
 								</div></td>
 						
-				
+				      <td  width="130px" align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>备注</p>
+								</div></td>
 																	
 						</tr>
 							<c:forEach items="${list}" var="wc" varStatus="status">
@@ -83,12 +86,13 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 										align="center">${fb:newnumbertoname(wc.newnumber)}</div></td>
 								<td width="200px" height="25" align="center" valign="middle" nowrap><div
 										align="center">${fb:zunametostring(wc.zu)}</div></td>
-								
+									<td width="200px" height="25" align="center" valign="middle" nowrap><div
+										align="center">${wc.remark}</div></td>
 						
 							</tr>
 							</c:forEach>
 						<tr height="50px" class="表格表头背景1" id="hang">
-							<td  colspan="3" align="center" valign="middle" nowrap
+							<td  colspan="4" align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<input type="button"  onClick="javascript:history.go(-1);" value="返   回" />
 								</div></td>

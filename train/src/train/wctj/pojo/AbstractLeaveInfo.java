@@ -18,6 +18,7 @@ public abstract class AbstractLeaveInfo  implements java.io.Serializable {
      private String newnumber;
      private String begindate;
      private String enddate;
+     private String remark;
 
 
     // Constructors
@@ -28,12 +29,13 @@ public abstract class AbstractLeaveInfo  implements java.io.Serializable {
 
     
     /** full constructor */
-    public AbstractLeaveInfo(Integer leavetype, String name, String newnumber, String begindate, String enddate) {
+    public AbstractLeaveInfo(Integer leavetype, String name, String newnumber, String begindate, String enddate, String remark) {
         this.leavetype = leavetype;
         this.name = name;
         this.newnumber = newnumber;
         this.begindate = begindate;
         this.enddate = enddate;
+        this.remark = remark;
     }
 
    
@@ -85,6 +87,14 @@ public abstract class AbstractLeaveInfo  implements java.io.Serializable {
     
     public void setEnddate(String enddate) {
         this.enddate = enddate;
+    }
+
+    public String getRemark() {
+        return this.remark;
+    }
+    
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
    
 

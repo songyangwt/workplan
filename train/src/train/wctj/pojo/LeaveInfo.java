@@ -16,8 +16,8 @@ public class LeaveInfo extends AbstractLeaveInfo implements java.io.Serializable
 
     
     /** full constructor */
-    public LeaveInfo(Integer leavetype, String name, String newnumber, String begindate, String enddate) {
-        super(leavetype, name, newnumber, begindate, enddate);        
+    public LeaveInfo(Integer leavetype, String name, String newnumber, String begindate, String enddate, String remark) {
+        super(leavetype, name, newnumber, begindate, enddate, remark);        
     }
    
 }

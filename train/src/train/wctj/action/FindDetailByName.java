@@ -19,8 +19,17 @@ public class FindDetailByName {
 	
 
 	private String name;
+	private String date;
 	
 	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
 	public String getNewnumber() {
 		return newnumber;
 	}
@@ -66,9 +75,13 @@ public class FindDetailByName {
 			
 		
 		 	DateUtil du = new DateUtil();
-			String datetoday = du.getDateNow();
 			
-				hql = "from WorkData as wd where wd.name = '"+strname+"' and wd.date= '"+datetoday+"'";
+			 if(date==null||date=="")
+		 	    {
+		 	    	 date = du.getDateNow();
+		 	    }
+		 	 date = date.replaceAll("-", "");
+				hql = "from WorkData as wd where wd.name = '"+strname+"' and wd.date= '"+date+"'";
 				hql += " order by wd.id desc";
 			
 			System.out.println(hql);

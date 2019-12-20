@@ -40,6 +40,11 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 
  });
 
+ function expressout()
+	{
+		
+		window.location = "<%=path%>/exportdata.action";
+	}
  </script>
  <link href="<%=path%>/css/table_back.css" rel="stylesheet" type="text/css">
   </head>
@@ -78,7 +83,7 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 										
 								
 									<input type="submit" value="查询"/>
-								
+								   <input type="button" value="导出" onclick="expressout()"/>
 									
 							</div></td>	
 						</tr>
@@ -111,6 +116,10 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 								bordercolor=none><div align="center">
 									<p>理由</p>
 								</div></td>
+							<td  width="150px"  align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>备注</p>
+								</div></td>
 							<td  width="100px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>休假/借调详情</p>
@@ -139,6 +148,8 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 										align="center">${wc.location}</div></td>
 								<td width="150px" height="25" align="center" valign="middle" nowrap><div
 										align="center">${wc.reason}</div></td>
+								<td width="150px" height="25" align="center" valign="middle" nowrap><div
+										align="center">${wc.remark}</div></td>
 							    <td width="100px" height="25" align="center" valign="middle" nowrap><div
 										align="center">
 									
@@ -170,7 +181,7 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 							</tr>
 							</c:forEach>
 							<tr class="表格表头背景">
-							<td colspan="9">
+							<td colspan="10">
 								<div align="center">
 								<a	href="<%=path%>/showchuwctj.action?zhuan=1&name=${strtemp}&zu=${zu}&newnumber=${newnumber}&currentPage=${previousPage}"
 							style="padding-right: 30px;color: #104E8B">上一页</a> 

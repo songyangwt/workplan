@@ -244,8 +244,9 @@ $(document).ready(function(){
 									<li class="cc"  onclick="frame('import_data')">导入排班数据</li>
 								
 									</c:if>
+								   <li class="cc"  onclick="frame('all_data')">处室人员分布一栏</li>	
 									<c:if test="${authoA=='A'||authoB=='B'||authoC=='C'||authoE=='E'}">
-                                    <li class="cc"  onclick="frame('all_data')">处室人员分布一栏</li>							
+                                   						
 									<li class="cc"  onclick="frame('chu_data')">处室人员本周明细</li>
 									</c:if>
 									<c:if test="${authoF=='F'||authoD=='D'}">

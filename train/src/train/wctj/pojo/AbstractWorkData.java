@@ -23,6 +23,7 @@ public abstract class AbstractWorkData  implements java.io.Serializable {
      private Integer zu;
      private String city;
      private Integer leavetype;
+     private String remark;
 
 
     // Constructors
@@ -33,7 +34,7 @@ public abstract class AbstractWorkData  implements java.io.Serializable {
 
     
     /** full constructor */
-    public AbstractWorkData(String name, String newnumber, String date, String week, Integer worktype, String location, String reason, Integer zu, String city, Integer leavetype) {
+    public AbstractWorkData(String name, String newnumber, String date, String week, Integer worktype, String location, String reason, Integer zu, String city, Integer leavetype, String remark) {
         this.name = name;
         this.newnumber = newnumber;
         this.date = date;
@@ -44,6 +45,7 @@ public abstract class AbstractWorkData  implements java.io.Serializable {
         this.zu = zu;
         this.city = city;
         this.leavetype = leavetype;
+        this.remark = remark;
     }
 
    
@@ -135,6 +137,14 @@ public abstract class AbstractWorkData  implements java.io.Serializable {
     
     public void setLeavetype(Integer leavetype) {
         this.leavetype = leavetype;
+    }
+
+    public String getRemark() {
+        return this.remark;
+    }
+    
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
    
 

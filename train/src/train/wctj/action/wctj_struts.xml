@@ -90,6 +90,7 @@
 		</action>
 		<action name="submodifyrecord" class="train.wctj.action.SubModifyRecord">
 			<result name="success">/page/wctj/ModifyRecordSuccess.jsp</result>	
+			<result name="failed">/page/wctj/ModifyRecordPage.jsp</result>	
 		</action>
 		<action name="showleavedata" class="train.wctj.action.ShowLeaveData">
 			<result name="success">/page/wctj/ShowLeaveData.jsp</result>	
@@ -109,6 +110,12 @@
 		</action>
 		<action name="subjiediaomodify" class="train.wctj.action.SubJieDiaoModify">
 			<result name="success">/page/wctj/JieDiaoModifySuccess.jsp</result>	
+		</action>
+		<action name="deletejiediao" class="train.wctj.action.DeleteJieDiao">
+			<result name="success">/page/wctj/JieDiaoDelSuccess.jsp</result>	
+		</action>
+		<action name="deleteleave" class="train.wctj.action.DeleteLeave">
+			<result name="success">/page/wctj/LeaveDelSuccess.jsp</result>	
 		</action>
 	</package>
 </struts>    

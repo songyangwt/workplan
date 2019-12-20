@@ -133,7 +133,7 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 										align="center">
 									   
 										<a href="<%=path%>/showjiediaomodifypage.action?jiediaoid=${wc.id}">修改</a> 
-										
+										<a href="<%=path%>/deletejiediao.action?jiediaoid=${wc.id}">删除</a> 
 										&nbsp;&nbsp;
 										
 										<!-- 

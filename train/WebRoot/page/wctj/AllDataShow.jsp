@@ -52,31 +52,31 @@ $(document).ready(function(){
 
 $("tr.btbj:odd").css({"background-color":"#F0F0F0","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
 $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","font-size": "14px","font-weight":"lighter" }); 
-   var length1=document.getElementById("listcity").value;
-   var length2=document.getElementById("listjiediao").value;
- 
+   var length1="${lengthwaichu}";
+   var length2="${lengthjiediao}";
+
    if(Number(length1)!=0)
    {
     length1=Number(length1)>3?Number(length1):3;
-   	 document.getElementById("scroll1").style.height=Number(length1)*30+'px';
+   	 document.getElementById("scroll1").style.height=Number(length1)*33+'px';
    	 //alert(Number(length1)*30+'px');
    }
    if(Number(length2)!=0)
    {
 	   length2=Number(length2)>3?Number(length2):3;
-   	 document.getElementById("scroll2").style.height=Number(length2)*30+'px';
+   	 document.getElementById("scroll2").style.height=Number(length2)*33+'px';
    	 //alert(Number(length2)*30+'px');
    }
   
  
-   if(Number(length1)>8)
+   if(Number(length1)>6)
      {
-     	document.getElementById("scroll1").style.height='240px';
+     	document.getElementById("scroll1").style.height='198px';
      	//alert("450px");
      }
-  if(Number(length2)>8)
+  if(Number(length2)>6)
      {
-     	document.getElementById("scroll2").style.height='240px';
+     	document.getElementById("scroll2").style.height='198px';
      	 //alert("450px");
      }
  
@@ -85,14 +85,20 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
  function findbyname()
 {
 	 var name=document.getElementById("name").value;
+	var date=document.getElementById("date").value;
+	window.location = "<%=path%>/finddetailbyname.action?name="+name+"&date="+date;
+}
+ function findbydate()
+{
+	 var date=document.getElementById("date").value;
 	
-	window.location = "<%=path%>/finddetailbyname.action?name="+name;
+	window.location = "<%=path%>/showalldata.action?date="+date;
 }
 function findbyzu()
 {
 	var zu=document.getElementById("zu").value;
-	
-	window.location = "<%=path%>/finddetailbyzu.action?zu="+zu;
+	var date=document.getElementById("date").value;
+	window.location = "<%=path%>/finddetailbyzu.action?zu="+zu+"&date="+date;
 }
 function detail1()
 {
@@ -119,7 +125,8 @@ function detail3()
     <form  action="" method="post">
     <br><br>
     	  <p align="center" style="padding:0px;margin:0px; font-size: 28px;"><strong>研发支持二处员工分布情况</strong></p><br>
-    	    <p align="center" style="padding:0px;margin:0px; font-size: 20px;">姓名 :<input  style="width: 150px;" type="text" name="name" id="name"/><input type="button" value="查询" onclick="findbyname()"/>&nbsp;&nbsp;&nbsp;&nbsp;小组:	<select id="zu" name="zu" style="width: 180px">
+                	  
+    	    <p align="center" style="padding:0px;margin:0px; font-size: 20px;">日期：<input style="width:150px" type="text" name="date" id="date" class="Wdate"  value="${date}"   onClick="WdatePicker();"><input type="button" value="查询" onclick="findbydate()"/>&nbsp;&nbsp;&nbsp;&nbsp;	 姓名 :<input  style="width: 150px;" type="text" name="name" id="name"/><input type="button" value="查询" onclick="findbyname()"/>&nbsp;&nbsp;&nbsp;&nbsp;小组:	<select id="zu" name="zu" style="width: 180px">
 										<option value="wu">-请选择小组-</option>
 										<option value="1">测试管理组</option>
 										<option value="2">需求管理组</option>
@@ -151,8 +158,8 @@ function detail3()
            </div>
            
            <div style="width:1000px; margin:0 auto;" >  
-              <div style="width:965px; float:left; height:300px; border:1px solid black; ">
-            <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>外出</strong></p><br>
+              <div style="width:965px; float:left; height:350px; border:1px solid black; ">
+            <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>出差（外出）</strong></p><br>
              <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日共有：${numtype4}人<br><br>
                <c:if test="${fn:length(listcity)!=0}">  
 			           
@@ -201,7 +208,7 @@ function detail3()
            </div>   
             <div style="width:965px; float:left; height:20px; ">
           </div>  
-            <div  style="width:965px; float:left; height:300px; border:1px solid black; " >
+            <div  style="width:965px; float:left; height:350px; border:1px solid black; " >
             <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>借调</strong></p><br>
              <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日共有：${numtype5}人<br><br>
                <c:if test="${fn:length(listjiediao)!=0}">  

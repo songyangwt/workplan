@@ -40,5 +40,8 @@
         <property name="leavetype" type="java.lang.Integer">
             <column name="leavetype" />
         </property>
+        <property name="remark" type="java.lang.String">
+            <column name="remark" length="512" />
+        </property>
     </class>
 </hibernate-mapping>

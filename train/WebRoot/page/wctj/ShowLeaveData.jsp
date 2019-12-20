@@ -129,7 +129,7 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 										align="center">
 									   
 										<a href="<%=path%>/showleavemodifypage.action?leaveid=${wc.id}">修改</a> 
-										
+										<a href="<%=path%>/deleteleave.action?leaveid=${wc.id}">删除</a> 
 										&nbsp;&nbsp;
 										
 										<!-- 

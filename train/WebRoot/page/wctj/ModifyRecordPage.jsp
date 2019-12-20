@@ -57,7 +57,18 @@ $('#worktype').attr('value',worktype);
 	    $("#location").show();
 	    $("#reason").show();
 	   }
-	  
+	   else if(type==4)
+	   {
+	   	 $("#city").hide();
+	     $("#location").hide();
+	     $("#reason").hide();
+	   }
+	   else if(type==5)
+	   {
+	   	 $("#city").hide();
+	     $("#location").hide();
+	     $("#reason").hide();
+	   }
         // return;
      }
 	
@@ -102,8 +113,8 @@ $('#worktype').attr('value',worktype);
 										<option value="1">川投大厦</option>
 										<option value="2">航天大厦</option>
 										<option value="3">外出</option>
-										<!--  <option value="4">借调</option>-->
-										<!--  <option value="5">休假</option>-->
+										<option value="4">借调</option>
+										<option value="5">休假</option>
 						</select>
     			</td>
     			
@@ -140,7 +151,17 @@ $('#worktype').attr('value',worktype);
     			
     		</tr>
     		
-    	
+    	    <tr>
+    			<td width="200" class="as" >
+    				<span style="font-size:12pt;color:black">备注</span>
+    			</td>
+    			<td width="400" class="as">
+    			<input style="width:380px"  type="text" id="remark" name="remark" value="${wd.remark}"  /> 
+    				
+    			</td>
+    			
+    		</tr>
+    		
     		
     		
     		  <tr>
@@ -159,7 +180,7 @@ $('#worktype').attr('value',worktype);
     	</table>
 				
 					
-			
+			 <input type="hidden" name="newnumber" value="${newnumber}"/>
 		    <input type="hidden" id="workdataid" name="workdataid" value="${workdataid}"/> 
 		    <input type="hidden" id="paraworktype" name="paraworktype" value="${wd.worktype}"/> 
 		</form>

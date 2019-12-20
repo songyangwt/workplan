@@ -25,5 +25,8 @@
         <property name="enddate" type="java.lang.String">
             <column name="enddate" length="16" />
         </property>
+        <property name="remark" type="java.lang.String">
+            <column name="remark" length="512" />
+        </property>
     </class>
 </hibernate-mapping>

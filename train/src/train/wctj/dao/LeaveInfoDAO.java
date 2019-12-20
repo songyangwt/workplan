@@ -9,7 +9,6 @@ import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import train.wctj.pojo.JieDiao;
 import train.wctj.pojo.LeaveInfo;
 
 /**
@@ -29,6 +28,7 @@ public class LeaveInfoDAO extends BaseHibernateDAO  {
 	public static final String NEWNUMBER = "newnumber";
 	public static final String BEGINDATE = "begindate";
 	public static final String ENDDATE = "enddate";
+	public static final String REMARK = "remark";
 
 
 
@@ -125,6 +125,12 @@ public class LeaveInfoDAO extends BaseHibernateDAO  {
 	public List findByEnddate(Object enddate
 	) {
 		return findByProperty(ENDDATE, enddate
+		);
+	}
+	
+	public List findByRemark(Object remark
+	) {
+		return findByProperty(REMARK, remark
 		);
 	}
 	

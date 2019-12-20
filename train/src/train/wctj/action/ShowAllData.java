@@ -20,13 +20,38 @@ public class ShowAllData {
     private int numtype3;
     private int numtype4;
     private int numtype5;
-   
-
+    private int lengthjiediao;
+    private int lengthwaichu;
+  
 	private List<JieDiao>listjiediao;
 	private List<WorkData>listwaichu;
 	private List<WaiChuDataBean>listcity;
 	private List<String> listtemp1;
 	private List<Object> listtemp2;
+
+
+	public int getLengthjiediao() {
+		return lengthjiediao;
+	}
+
+
+
+	public void setLengthjiediao(int lengthjiediao) {
+		this.lengthjiediao = lengthjiediao;
+	}
+
+
+
+	public int getLengthwaichu() {
+		return lengthwaichu;
+	}
+
+
+
+	public void setLengthwaichu(int lengthwaichu) {
+		this.lengthwaichu = lengthwaichu;
+	}
+
 
 
 	public List<WaiChuDataBean> getListcity() {
@@ -160,7 +185,12 @@ public class ShowAllData {
 		Session session = HibernateSessionFactory.getSession();
  	    Transaction trans = session.beginTransaction();
  	    DateUtil du = new DateUtil();
- 	    date = du.getDateNow();
+ 	    if(date==null||date=="")
+ 	    {
+ 	    	 date = du.getDateNow();
+ 	    }
+ 	    date = date.replaceAll("-", "");
+ 	   // date = du.getDateNow();
  	    listcity=new ArrayList<WaiChuDataBean>();
  	   // UserInfo ui = new UserInfo();
  	   // UserInfoDAO uidao = new UserInfoDAO();
@@ -190,7 +220,7 @@ public class ShowAllData {
  	    	hql1 = "from JieDiao as wd where wd.begindate<= '"+date+"' and wd.enddate>= '"+date+"'";
  	    	query = session.createQuery(hql1);
  	    	listjiediao = query.list();
- 	    
+ 	        lengthjiediao = listjiediao.size();
  	  
  	 
  		   /* hql2 = "from LeaveInfo as wd where wd.begindate<= '"+date+"' and wd.enddate>= '"+date+"'";
@@ -214,6 +244,7 @@ public class ShowAllData {
 		    	wb.setSum(sum);
 		    	listcity.add(wb);
 			}
+		    lengthwaichu = listcity.size();
  	    trans.commit();
 		session.flush();
 		session.clear();

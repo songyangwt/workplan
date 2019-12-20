@@ -68,7 +68,7 @@ $('#leavetype').attr('value',leavetype);
     			</td>
     			<td width="400" class="as">
     			<!-- <input style="width:380px"  type="text" id="begindate" name="begindate"  value="${wc.begindate}" />  -->
-    			<input style="width:380px" type="text" name="begindate" id="begindate" class="Wdate"   value="${wc.begindate}" >	
+    			<input style="width:380px" type="text" name="begindate" id="begindate" class="Wdate"   value="${wc.begindate}" onClick="WdatePicker();">	
     			</td>
     			
     		</tr>
@@ -79,7 +79,7 @@ $('#leavetype').attr('value',leavetype);
     			</td>
     			<td width="400" class="as">
     			<!-- <input style="width:380px"  type="text" id="enddate" name="enddate"  value="${wc.enddate}" /> -->
-    			<input style="width:380px" type="text" name="enddate" id="enddate" class="Wdate"   value="${wc.enddate}" >	
+    			<input style="width:380px" type="text" name="enddate" id="enddate" class="Wdate"   value="${wc.enddate}" onClick="WdatePicker();">	
     			</td>
     			
     		</tr>

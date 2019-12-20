@@ -84,8 +84,8 @@ public String execute() throws Exception {
 				//session.createSQLQuery(sql).executeUpdate();
 				for (int i = 1; i < nn; i++) {
 					
-					
-				
+					if(sheet.getCell(1, i).getContents().trim()!="")
+					{
 						 LeaveInfo wdtemp = new LeaveInfo();
 						
 						 wdtemp.setLeavetype(Integer.valueOf(sheet.getCell(0, i).getContents().trim()));
@@ -94,7 +94,7 @@ public String execute() throws Exception {
 						 wdtemp.setBegindate(sheet.getCell(3, i).getContents().trim());
 						 wdtemp.setEnddate(sheet.getCell(4, i).getContents().trim());
 						 wddao.merge(wdtemp);
-					
+					}
 			
 					}
 					

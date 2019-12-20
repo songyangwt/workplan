@@ -11,8 +11,8 @@ import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import train.wctj.pojo.WorkData;
 import train.wctj.pojo.GlobalDataBean;
+import train.wctj.pojo.WorkData;
 
 /**
  	* A data access object (DAO) providing persistence and search support for WorkData entities.
@@ -36,6 +36,7 @@ public class WorkDataDAO extends BaseHibernateDAO  {
 	public static final String ZU = "zu";
 	public static final String CITY = "city";
 	public static final String LEAVETYPE = "leavetype";
+	public static final String REMARK = "remark";
 
 
 
@@ -162,6 +163,12 @@ public class WorkDataDAO extends BaseHibernateDAO  {
 	public List findByLeavetype(Object leavetype
 	) {
 		return findByProperty(LEAVETYPE, leavetype
+		);
+	}
+	
+	public List findByRemark(Object remark
+	) {
+		return findByProperty(REMARK, remark
 		);
 	}
 	

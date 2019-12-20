@@ -70,12 +70,15 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 								bordercolor=none><div align="center">
 									<p>小组</p>
 								</div></td>
-							<td  width="130px"  align="center" valign="middle" nowrap
+							<td  width="200px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>理由</p>
 								</div></td>	
 						
-						
+						<td  width="130px"  align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>备注</p>
+								</div></td>	
 																	
 						</tr>
 							<c:forEach items="${list}" var="wc" varStatus="status">
@@ -87,9 +90,11 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 										align="center">${wc.name}</div></td>
 								<td width="130px" height="25" align="center" valign="middle" nowrap><div
 										align="center">${fb:zunametostring(wc.zu)}</div></td>
-								<td width="100px" height="25" align="center" valign="middle" nowrap><div
+								<td width="200px" height="25" align="center" valign="middle" nowrap><div
 										align="center">${wc.reason}</div></td>
-												
+								<td width="130px" height="25" align="center" valign="middle" nowrap><div
+										align="center">${wc.remark}</div></td>
+																
 							</tr>
 							</c:forEach>
 							<tr height="50px" class="表格表头背景1" id="hang">

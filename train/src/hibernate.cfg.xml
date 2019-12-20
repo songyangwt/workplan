@@ -47,6 +47,7 @@
 		<mapping resource="train/wctj/pojo/JieDiao.hbm.xml" />
 		<mapping resource="train/wctj/pojo/LeaveInfo.hbm.xml" />
 		<mapping resource="train/wctj/pojo/ModifyRecord.hbm.xml" />
+		
 
 
 

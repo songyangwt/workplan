@@ -1,7 +1,12 @@
 package train.wctj.action;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.interceptor.ServletResponseAware;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import com.opensymphony.xwork2.ActionSupport;
 
 import train.process.action.GetProcessByPosition;
 import train.userinfo.dao.UserInfoDAO;
@@ -16,7 +21,7 @@ import train.wctj.pojo.WorkData;
 import train.wctj.pojo.WorkModify;
 import ccb.hibernate.HibernateSessionFactory;
 
-public class SubModifyRecord {
+public class SubModifyRecord extends ActionSupport implements ServletResponseAware  {
 	private String newnumber;
 	private String message;
 
@@ -31,6 +36,10 @@ public class SubModifyRecord {
     private String location;
     private String city;
     
+    public void setServletResponse(HttpServletResponse arg0) {
+		// TODO Auto-generated method stub
+		
+	}
     
 	public String getCity() {
 		return city;
@@ -138,7 +147,7 @@ public class SubModifyRecord {
 		String number = "";
 		String result = "success";
 		
-		message = "提交申请成功";
+		//message = "提交申请成功";
 		
 
 		Session session = HibernateSessionFactory.getSession();
@@ -173,13 +182,13 @@ public class SubModifyRecord {
 		if(wmdao.findAllByNumber(number)!=null)
 		{
 			result = "failed";
-			message = "提交失败，原因异常";
+			//message = "提交失败，原因异常";
+			this.addFieldError("失败","重复提交");
 			trans.rollback();
 			return result;
 		}
 	
-		//获得公干流程编号
-	
+		
  	    wm.setApplicant(newnumber);
  	    wm.setDate(date);
  	    if((reason!="")&&(reason!=null))
@@ -209,6 +218,7 @@ public class SubModifyRecord {
  	    		    wd.setReason("");
  	    		    wd.setCity("");
  	    		    wd.setLocation("");
+ 	    		    wd.setRemark(remark);
  	    		}
  	    		if(worktype==2)
  	    		{
@@ -216,6 +226,7 @@ public class SubModifyRecord {
  	    		    wd.setReason(reason);
  	    		    wd.setCity("");
 	    		    wd.setLocation("");
+	    		    wd.setRemark(remark);
  	    		}
  	    		if(worktype==3)
  	    		{
@@ -223,9 +234,27 @@ public class SubModifyRecord {
  	    			 wd.setReason(reason);
  	    			 wd.setCity(city);
  	    			 wd.setLocation(location);
+ 	    			  wd.setRemark(remark);
  	    		
  	    		}
+ 	    		if(worktype==4)
+ 	    		{
+ 	    			wd.setWorktype(worktype);
+ 	    		    wd.setReason("");
+ 	    		    wd.setCity("");
+ 	    		    wd.setLocation("");
+ 	    		   wd.setRemark(remark);
+ 	    		}
+ 	    		if(worktype==5)
+ 	    		{
+ 	    			wd.setWorktype(worktype);
+ 	    		    wd.setReason("");
+ 	    		    wd.setCity("");
+ 	    		    wd.setLocation("");
+ 	    		   wd.setRemark(remark);
+ 	    		}
  	    		wddao.merge(wd);
+ 	    		message="修改成功!";
  	    		
  	    	}
  	    	else

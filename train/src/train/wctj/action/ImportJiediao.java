@@ -82,8 +82,8 @@ public String execute() throws Exception {
 				//session.createSQLQuery(sql).executeUpdate();
 				for (int i = 1; i < nn; i++) {
 					
-					
-				
+					   if(sheet.getCell(0, i).getContents().trim()!="")
+					   {
 						 JieDiao wdtemp = new JieDiao();
 					
 						 wdtemp.setName(sheet.getCell(0, i).getContents().trim());
@@ -94,7 +94,7 @@ public String execute() throws Exception {
 						 wdtemp.setReason(sheet.getCell(5, i).getContents().trim());
 						 wdtemp.setDepartment(sheet.getCell(6, i).getContents().trim());
 						 wddao.merge(wdtemp);
-						
+					   }
 			
 					}
 					

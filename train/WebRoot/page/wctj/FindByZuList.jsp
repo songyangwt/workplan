@@ -98,6 +98,10 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 								bordercolor=none><div align="center">
 									<p>外出地点</p>
 								</div></td>
+							<td  width="150px"  align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>备注</p>
+								</div></td>
 							<td  width="100px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>休假/借调详情</p>
@@ -122,7 +126,9 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 								<td width="100px" height="25" align="center" valign="middle" nowrap><div
 										align="center"> ${wc.city}</div></td>
 								<td width="150px" height="25" align="center" valign="middle" nowrap><div
-										align="center">${wc.location}</div></td>								
+										align="center">${wc.location}</div></td>	
+								<td width="150px" height="25" align="center" valign="middle" nowrap><div
+										align="center">${wc.remark}</div></td>							
 						  	    <td width="100px" height="25" align="center" valign="middle" nowrap><div
 										align="center">
 									
@@ -140,7 +146,7 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 							</tr>
 							</c:forEach>
 							<tr class="表格表头背景">
-							<td colspan="8">
+							<td colspan="9">
 								<div align="center">
 							
 								<input type="hidden" name="zu" value="${wc.zu}"/>
