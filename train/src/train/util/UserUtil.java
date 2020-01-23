@@ -360,6 +360,7 @@ public class UserUtil {
 		String authoD = authority.substring(3,4);
 		String authoE = authority.substring(4,5);
 		String authoF = authority.substring(5,6);
+		String authoG = authority.substring(6,7);
 		
 		if(authoA.equals("A"))
 		{
@@ -386,6 +387,11 @@ public class UserUtil {
 		{
 			return "普通员工";
 		}
+		else if(authoG.equals("G"))
+		{
+			return "考勤管理员";
+		}
+	
 	
 		else
 		{

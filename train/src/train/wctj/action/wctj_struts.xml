@@ -54,6 +54,9 @@
 		<action name="importleaveinfo" class="train.wctj.action.ImportLeaveinfo">
 			<result name="success">/page/wctj/ImportSuccess.jsp</result>		
 		</action>
+		<action name="importonduty" class="train.wctj.action.ImportOnduty">
+			<result name="success">/page/wctj/ImportSuccess.jsp</result>		
+		</action>
 		<action name="deletemodifypage" class="train.wctj.action.DeleteModifyPage">
 			<result name="success">/page/wctj/DeleteSuccess.jsp</result>		
 		</action>
@@ -116,6 +119,12 @@
 		</action>
 		<action name="deleteleave" class="train.wctj.action.DeleteLeave">
 			<result name="success">/page/wctj/LeaveDelSuccess.jsp</result>	
+		</action>
+		<action name="exportworkdata" class="train.wctj.action.ExportWorkData">
+			<result name="success">/page/public/derivedetail.jsp</result>
+		</action>
+		<action name="showondutydata" class="train.wctj.action.ShowOnDutyData">
+			<result name="success">/page/wctj/ShowOnDutyData.jsp</result>
 		</action>
 	</package>
 </struts>    

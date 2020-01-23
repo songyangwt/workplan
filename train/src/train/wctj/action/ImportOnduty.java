@@ -1,19 +1,23 @@
 package train.wctj.action;
 
 import java.io.File;
+
 import jxl.Sheet;
 import jxl.Workbook;
-import train.wctj.dao.WorkDataDAO;
-import train.wctj.pojo.WorkData;
 
 import org.apache.commons.io.FileUtils;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import train.wctj.dao.LeaveInfoDAO;
+import train.wctj.dao.OnDutyDAO;
+import train.wctj.pojo.LeaveInfo;
+import train.wctj.pojo.OnDuty;
 import ccb.hibernate.HibernateSessionFactory;
+
 import com.opensymphony.xwork2.ActionContext;
 
-public class ImportWctj {
-
+public class ImportOnduty {
 	private File file; //上传的文件
     private String fileFileName;
     private String fileContentType;
@@ -67,7 +71,7 @@ public String execute() throws Exception {
 	
 			Session session = HibernateSessionFactory.getSession();
 	    	Transaction trans=session.beginTransaction();
-	    	WorkDataDAO wddao = new WorkDataDAO();
+	        OnDutyDAO wddao = new OnDutyDAO();
 	    	
 	    	try {
 	    		Workbook book = Workbook.getWorkbook(new File(realpath+fileFileName));
@@ -80,41 +84,33 @@ public String execute() throws Exception {
 				//session.createSQLQuery(sql).executeUpdate();
 				for (int i = 1; i < nn; i++) {
 					
-					String newnumber = sheet.getCell(1, i).getContents().trim();
-			        String date = sheet.getCell(3, i).getContents().trim();
-					WorkData wd = wddao.findByDateAndNewnumber(date, newnumber);
-					if(newnumber!=""&&date!="")
+					if(sheet.getCell(1, i).getContents().trim()!="")
 					{
-					if(wd==null)
-					{
-						 WorkData wdtemp = new WorkData();
-						 wdtemp.setZu(Integer.parseInt(sheet.getCell(2, i).getContents().trim()));
-						 wdtemp.setDate(sheet.getCell(3, i).getContents().trim());
-						 wdtemp.setNewnumber(sheet.getCell(1, i).getContents().trim());
-						 wdtemp.setName(sheet.getCell(0, i).getContents().trim() );
-						 wdtemp.setLocation(sheet.getCell(6, i).getContents().trim());
-						 wdtemp.setWeek(sheet.getCell(4, i).getContents().trim());
-						 wdtemp.setWorktype(Integer.parseInt(sheet.getCell(5, i).getContents().trim()));
-						 wdtemp.setReason(sheet.getCell(7, i).getContents().trim());
-						 wdtemp.setCity(sheet.getCell(8, i).getContents().trim() );
-						 wdtemp.setRemark(sheet.getCell(9, i).getContents().trim());
-						 wddao.merge(wdtemp);
-					}
-					else
-					{
-						 wd.setZu(Integer.parseInt(sheet.getCell(2, i).getContents().trim()));
-						 wd.setDate(sheet.getCell(3, i).getContents().trim());
-						 wd.setNewnumber(sheet.getCell(1, i).getContents().trim());
-						 wd.setName(sheet.getCell(0, i).getContents().trim() );
-						 wd.setLocation(sheet.getCell(6, i).getContents().trim());
-						 wd.setWeek(sheet.getCell(4, i).getContents().trim());
-						 wd.setWorktype(Integer.parseInt(sheet.getCell(5, i).getContents().trim()));
-						 wd.setReason(sheet.getCell(7, i).getContents().trim());
-						 wd.setCity(sheet.getCell(8, i).getContents().trim() );
-						 wd.setRemark(sheet.getCell(9, i).getContents().trim());
-						 wddao.merge(wd);
-					}
-					}
+						String name = sheet.getCell(0, i).getContents().trim();
+				        String date = sheet.getCell(1, i).getContents().trim();
+						
+				        OnDuty od = wddao.findByDateAndName(date,name);
+				        if(od==null)
+				        {
+				        	 OnDuty wdtemp = new OnDuty();
+							
+							 wdtemp.setName(sheet.getCell(0, i).getContents().trim() );
+							 wdtemp.setDate(sheet.getCell(1, i).getContents().trim() );
+							 wdtemp.setRemark(sheet.getCell(2, i).getContents().trim() );
+							 
+							 wddao.merge(wdtemp);
+				        }
+				        else
+				        {
+				        	 od.setName(sheet.getCell(0, i).getContents().trim() );
+							 od.setDate(sheet.getCell(1, i).getContents().trim() );
+							 od.setRemark(sheet.getCell(2, i).getContents().trim() );
+							 
+							 wddao.merge(od);
+				        }
+						
+			
+				     	}
 			
 					}
 					

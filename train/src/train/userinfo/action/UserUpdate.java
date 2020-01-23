@@ -165,6 +165,10 @@ public class UserUpdate  extends ActionSupport implements ServletResponseAware  
 	    	{
 	    		autho="00000F0";
 	    	}
+	    	if(role.equals("G"))
+	    	{
+	    		autho="000000G";
+	    	}
 	    	
 	    	return autho;
 	    }

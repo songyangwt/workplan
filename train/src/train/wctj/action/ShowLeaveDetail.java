@@ -17,7 +17,17 @@ public class ShowLeaveDetail {
 	private static final Log log = LogFactory.getLog(WorkData.class);
 	private String newnumber;// 新一代员工编号
 	private List<LeaveInfo> list;
+	private String date;
 	
+	
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
 
 	public String getNewnumber() {
 		return newnumber;
@@ -54,9 +64,14 @@ public class ShowLeaveDetail {
 			
 		
 		 	DateUtil du = new DateUtil();
-			String datetoday = du.getDateNow();
+			 if(date==null||date=="")
+		 	    {
+		 	    	 date = du.getDateNow();
+		 	    }
+		 	 date = date.replaceAll("-", "");
 			
-			hql = "from LeaveInfo as wd  where  wd.begindate<= '"+datetoday+"' and wd.enddate>= '"+datetoday+"'";
+			
+			hql = "from LeaveInfo as wd  where  wd.begindate<= '"+date+"' and wd.enddate>= '"+date+"'";
 	        hql += " order by wd.id desc";
 			
 			System.out.println(hql);

@@ -57,7 +57,7 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 
    if(Number(length1)!=0)
    {
-    length1=Number(length1)>3?Number(length1):3;
+    length1=Number(length1);
    	 document.getElementById("scroll1").style.height=Number(length1)*33+'px';
    	 //alert(Number(length1)*30+'px');
    }
@@ -69,9 +69,9 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
    }
   
  
-   if(Number(length1)>6)
+   if(Number(length1)>3)
      {
-     	document.getElementById("scroll1").style.height='198px';
+     	document.getElementById("scroll1").style.height='99px';
      	//alert("450px");
      }
   if(Number(length2)>6)
@@ -102,18 +102,18 @@ function findbyzu()
 }
 function detail1()
 {
-	
-	window.location = "<%=path%>/showdetail.action?type=1";
+	var date=document.getElementById("date").value;
+	window.location = "<%=path%>/showdetail.action?type=1&date="+date;
 }
 function detail2()
 {
-	
-	window.location = "<%=path%>/showdetail.action?type=2";
+	var date=document.getElementById("date").value;
+	window.location = "<%=path%>/showdetail.action?type=2&date="+date;
 }
 function detail3()
 {
-	
-	window.location = "<%=path%>/showleavedetail.action";
+	var date=document.getElementById("date").value;
+	window.location = "<%=path%>/showleavedetail.action?date="+date;
 }
  </script>
  
@@ -123,7 +123,7 @@ function detail3()
   
   <body>
     <form  action="" method="post">
-    <br><br>
+    <br>
     	  <p align="center" style="padding:0px;margin:0px; font-size: 28px;"><strong>研发支持二处员工分布情况</strong></p><br>
                 	  
     	    <p align="center" style="padding:0px;margin:0px; font-size: 20px;">日期：<input style="width:150px" type="text" name="date" id="date" class="Wdate"  value="${date}"   onClick="WdatePicker();"><input type="button" value="查询" onclick="findbydate()"/>&nbsp;&nbsp;&nbsp;&nbsp;	 姓名 :<input  style="width: 150px;" type="text" name="name" id="name"/><input type="button" value="查询" onclick="findbyname()"/>&nbsp;&nbsp;&nbsp;&nbsp;小组:	<select id="zu" name="zu" style="width: 180px">
@@ -137,30 +137,31 @@ function detail3()
 						</select>
     				<input type="button" value="查询" onclick="findbyzu()"/></p>  
 
-    	        <br><br>
+    	        <br>
     	  
           <div style="width:1000px; margin:0 auto;" >    
-           <p align="left" style="padding:0px;margin:0px; font-size: 18px;"><strong>处室共有：${numtype1+numtype2+numtype3+numtype4+numtype5}人</strong></p><br>                        
-           <div  style="width:300px; height:150px;float:left; border:1px solid black; margin:0px 30px 30px 0px;">
-            <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>川投大厦</strong></p><br>
-             <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日共有：${numtype1}人<br><br><input type="button" value="查看详情" onclick="detail1()"/></p><br> 
+           <p align="left" style="padding:0px;margin:0px; font-size: 18px;"><strong>处室共有：${numtype1+numtype2+numtype3+numtype4+numtype5}人</strong></p><br>  
+             <p align="left" style="padding:0px;margin:0px; font-size: 18px;"><strong>今日消防安全值班：${zhibannames}</strong></p><br>                         
+           <div  style="width:300px; height:85px;float:left; border:1px solid black; margin:0px 30px 30px 0px;">
+            <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>川投大厦:</strong></p><br>
+             <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日：${numtype1}人&nbsp;&nbsp;<input type="button" value="查看详情" onclick="detail1()"/></p> 
            </div>   
            
-            <div style="width:300px; height:150px;float:left; border:1px solid black; margin:0px 30px 30px 0px;" >
+            <div style="width:300px; height:85px;float:left; border:1px solid black; margin:0px 30px 30px 0px;" >
             <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>航天办公</strong></p><br>
-             <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日共有：${numtype2}人<br><br><input type="button" value="查看详情" onclick="detail2()"/></p><br> 
+             <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日：${numtype2}人&nbsp;&nbsp;<input type="button" value="查看详情" onclick="detail2()"/></p>
            </div>
-             <div style="width:300px; height:150px;float:left; border:1px solid black; margin:0px 30px 30px 0px;">
+             <div style="width:300px; height:85px;float:left; border:1px solid black; margin:0px 30px 30px 0px;">
             <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>休假</strong></p><br>
-             <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日共有：${numtype3}人<br><br><input type="button" value="查看详情" onclick="detail3()"/></p><br> 
+             <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日：${numtype3}人&nbsp;&nbsp;<input type="button" value="查看详情" onclick="detail3()"/></p>
            </div>
             
            </div>
            
            <div style="width:1000px; margin:0 auto;" >  
-              <div style="width:965px; float:left; height:350px; border:1px solid black; ">
-            <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>出差（外出）</strong></p><br>
-             <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日共有：${numtype4}人<br><br>
+              <div style="width:965px; float:left; height:200px; border:1px solid black; ">
+            <p  align="center"><span style="padding:0px;margin:0px; font-size: 24px;"><strong>出差（外出）:</strong> </span> <span  style="padding:0px;margin:0px; font-size: 20px;">今日 ${numtype4}人</span></p>
+             <!-- <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日：${numtype4}人</p> -->
                <c:if test="${fn:length(listcity)!=0}">  
 			           
 				
@@ -194,7 +195,7 @@ function detail3()
 										align="center">${wb.sum}</div></td>		
 								<td width="150px" height="25" align="center" valign="middle" nowrap><div
 										align="center">
-											<a href="<%=path%>/showcitydetail.action?city=${wb.city}">查看详情</a>
+											<a href="<%=path%>/showcitydetail.action?city=${wb.city}&date=${date}">查看详情</a>
 										</div>
 								</td>
 							
@@ -209,8 +210,8 @@ function detail3()
             <div style="width:965px; float:left; height:20px; ">
           </div>  
             <div  style="width:965px; float:left; height:350px; border:1px solid black; " >
-            <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>借调</strong></p><br>
-             <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日共有：${numtype5}人<br><br>
+           <p align="center"> <span  style="padding:0px;margin:0px; font-size: 24px;"><strong>借调:</strong></span>  <span style="padding:0px;margin:0px; font-size: 20px;">今日  ${numtype5}人</span></p>
+             <!-- <p align="center" style="padding:0px;margin:0px; font-size: 18px;">今日：${numtype5}人</p> -->
                <c:if test="${fn:length(listjiediao)!=0}">  
 			           
 				

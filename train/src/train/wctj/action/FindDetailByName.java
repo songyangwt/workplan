@@ -82,7 +82,7 @@ public class FindDetailByName {
 		 	    }
 		 	 date = date.replaceAll("-", "");
 				hql = "from WorkData as wd where wd.name = '"+strname+"' and wd.date= '"+date+"'";
-				hql += " order by wd.id desc";
+				hql += " order by wd.zu desc";
 			
 			System.out.println(hql);
 			query = session.createQuery(hql);

@@ -116,5 +116,32 @@ b{
     	</table>
     </form>
       </c:if>
+          <c:if test="${authoD=='D'}"> 
+        <form name="filename3" action="importonduty.action" method="post"  enctype="multipart/form-data">
+    	  <p align="center" style="padding:0px;margin:0px; font-size: 24px;"><strong>上传消防值班人员数据</strong></p>
+        <table width="500" border="1" align="center" cellpadding="1" cellspacing="0">
+    		
+    		<tr>
+    			<td class="as">
+    				上传附件<b>*</b>
+    			</td>
+    			<td colspan="3" id="p">
+    				文件：<input type="file" name="file" /><br/>
+    			 	
+    			</td>
+    		</tr>
+    		
+    		<tr>
+    			<td>
+    				&nbsp;
+    			</td>
+    			<td colspan="3">
+    				<input style="width:70px" type="submit" value="提  交"/><b>请保存成Excel2003格式上传</b> <br>
+    				<a href="<%=path%>/templet/onduty_data.xls">下载【消防值班人员表】模板</a>
+    			</td>
+    		</tr>
+    	</table>
+    </form>
+      </c:if>
   </body>
 </html>

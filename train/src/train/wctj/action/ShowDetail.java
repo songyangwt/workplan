@@ -17,11 +17,19 @@ public class ShowDetail {
 	private static final Log log = LogFactory.getLog(WorkData.class);
 	private String newnumber;// 新一代员工编号
 	private List<WorkData> list;
-	
+	private String date;
 
 	private int type;
 	
 	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
 	public String getNewnumber() {
 		return newnumber;
 	}
@@ -69,10 +77,15 @@ public class ShowDetail {
 			
 		
 		 	DateUtil du = new DateUtil();
-			String datetoday = du.getDateNow();
+		 	 if(date==null||date=="")
+		 	    {
+		 	    	 date = du.getDateNow();
+		 	    }
+		 	 date = date.replaceAll("-", "");
 			
-				hql = "from WorkData as wd where wd.worktype = '"+type+"' and wd.date= '"+datetoday+"'";
-				hql += " order by wd.id desc";
+			
+				hql = "from WorkData as wd where wd.worktype = '"+type+"' and wd.date= '"+date+"'";
+				hql += "  order by wd.id desc";
 			
 			System.out.println(hql);
 			query = session.createQuery(hql);

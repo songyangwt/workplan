@@ -115,7 +115,12 @@
 			<generator class="native"></generator>
 		</primary-key>
 	</table>
-<table name="t_modifyrecord" catalog="zzbg" class="ModifyRecord">
+	<table name="t_modifyrecord" catalog="zzbg" class="ModifyRecord">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+<table name="t_onduty" catalog="zzbg" class="OnDuty">
 	<primary-key>
 		<generator class="native"></generator>
 	</primary-key>

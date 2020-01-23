@@ -6,8 +6,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import train.util.DateUtil;
+import train.wctj.dao.OnDutyDAO;
 import train.wctj.dao.WorkDataDAO;
 import train.wctj.pojo.JieDiao;
+import train.wctj.pojo.OnDuty;
 import train.wctj.pojo.WaiChuDataBean;
 import train.wctj.pojo.WorkData;
 import ccb.hibernate.HibernateSessionFactory;
@@ -22,12 +24,48 @@ public class ShowAllData {
     private int numtype5;
     private int lengthjiediao;
     private int lengthwaichu;
-  
+    private String zhibannames;
 	private List<JieDiao>listjiediao;
 	private List<WorkData>listwaichu;
 	private List<WaiChuDataBean>listcity;
 	private List<String> listtemp1;
 	private List<Object> listtemp2;
+
+
+	public String getZhibannames() {
+		return zhibannames;
+	}
+
+
+
+	public void setZhibannames(String zhibannames) {
+		this.zhibannames = zhibannames;
+	}
+
+
+
+	public List<String> getListtemp1() {
+		return listtemp1;
+	}
+
+
+
+	public void setListtemp1(List<String> listtemp1) {
+		this.listtemp1 = listtemp1;
+	}
+
+
+
+	public List<Object> getListtemp2() {
+		return listtemp2;
+	}
+
+
+
+	public void setListtemp2(List<Object> listtemp2) {
+		this.listtemp2 = listtemp2;
+	}
+
 
 
 	public int getLengthjiediao() {
@@ -190,6 +228,21 @@ public class ShowAllData {
  	    	 date = du.getDateNow();
  	    }
  	    date = date.replaceAll("-", "");
+ 	    OnDutyDAO oddao = new OnDutyDAO();
+ 	    List<OnDuty> listduty = oddao.findByDate(date);
+ 	    if(listduty.size()==0)
+ 	    {
+ 	    	zhibannames="";
+ 	    }
+ 	    else
+ 	    {
+ 	    	 zhibannames = listduty.get(0).getName();
+ 	 	    for(int j=1;j<listduty.size();j++)
+ 			{
+ 		    	zhibannames = zhibannames+"、"+listduty.get(j).getName();
+ 			}
+ 	    }
+ 	   
  	   // date = du.getDateNow();
  	    listcity=new ArrayList<WaiChuDataBean>();
  	   // UserInfo ui = new UserInfo();

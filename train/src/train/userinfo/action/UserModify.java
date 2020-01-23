@@ -70,6 +70,7 @@ public class UserModify {
  	 String authoD=role.substring(3,4);
  	String authoE=role.substring(4,5);
  	String authoF=role.substring(5,6);
+ 	String authoG=role.substring(6,7);
  	if(authoA.equals("A"))
  	{
  		role="A";
@@ -93,6 +94,10 @@ public class UserModify {
 	if(authoF.equals("F"))
  	{
  		role="F";
+ 	}
+	if(authoG.equals("G"))
+ 	{
+ 		role="G";
  	}
  	   
  	    trans.commit();

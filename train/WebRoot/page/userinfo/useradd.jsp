@@ -104,6 +104,7 @@
 										<option value="D">组长</option>
 										<option value="F">普通员工</option>
 										<option value="E">系统管理员</option>
+										<option value="G">考勤管理员</option>
 										
 						</select>
     				

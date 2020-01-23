@@ -19,7 +19,16 @@ public class ShowPersonJieDiaoDetail {
 	private static final Log log = LogFactory.getLog(WorkData.class);
 	private String newnumber;// 新一代员工编号
 	private List<JieDiao> list;
+	private String date;
 	
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
 
 	public String getNewnumber() {
 		return newnumber;
@@ -59,9 +68,14 @@ public class ShowPersonJieDiaoDetail {
 			
 		    ui = uidao.findByNewNumber(newnumber);
 		 	DateUtil du = new DateUtil();
-			String datetoday = du.getDateNow();
+		 	 if(date==null||date=="")
+		 	    {
+		 	    	 date = du.getDateNow();
+		 	    }
+		 	 date = date.replaceAll("-", "");
+			
 			String name = ui.getUsername();
-			hql = "from JieDiao as wd where wd.name = '"+name+"' and wd.begindate<= '"+datetoday+"' and wd.enddate>= '"+datetoday+"'";
+			hql = "from JieDiao as wd where wd.name = '"+name+"' and wd.begindate<= '"+date+"' and wd.enddate>= '"+date+"'";
 	        hql += " order by wd.id desc";
 			
 			System.out.println(hql);

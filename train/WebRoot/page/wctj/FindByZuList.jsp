@@ -133,11 +133,11 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 										align="center">
 									
 										<c:if test="${wc.worktype==4}">
-										<a href="<%=path%>/showpersonjiediaodetail.action?newnumber=${wc.newnumber}">查看借调详情</a> 
+										<a href="<%=path%>/showpersonjiediaodetail.action?newnumber=${wc.newnumber}&date=${wc.date}">查看借调详情</a> 
 										
 										</c:if>
 										<c:if test="${wc.worktype==5}">
-										<a href="<%=path%>/showpersonleavedetail.action?newnumber=${wc.newnumber}">查看休假详情</a> 
+										<a href="<%=path%>/showpersonleavedetail.action?newnumber=${wc.newnumber}&date=${wc.date}">查看休假详情</a> 
 										
 										</c:if>
 										</div></td>

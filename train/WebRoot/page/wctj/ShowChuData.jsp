@@ -42,8 +42,9 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 
  function expressout()
 	{
-		
-		window.location = "<%=path%>/exportdata.action";
+		var begindate = document.getElementById("begindate").value;
+		var enddate = document.getElementById("enddate").value;
+		window.location = "<%=path%>/exportworkdata.action?begindate="+begindate+"&enddate="+enddate;
 	}
  </script>
  <link href="<%=path%>/css/table_back.css" rel="stylesheet" type="text/css">
@@ -57,7 +58,7 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 						<tr>
 							<td
 								style="color: #1778C2; padding-top: 0px; padding-bottom: 5px; border: 0px; font-size: 26px; font-family: '黑体';"
-								colspan="13" align="center" bordercolor="#FFFFFF"><b><c:if test="${authoA=='A'||authoE=='E'||authoC=='C'||authoB=='B'}">处室明细</c:if><c:if test="${authoD=='D'||authoF=='F'}">小组明细</c:if></b>
+								colspan="13" align="center" bordercolor="#FFFFFF"><b><c:if test="${authoA=='A'||authoE=='E'||authoC=='C'||authoB=='B'||authoG=='G'}">处室明细</c:if><c:if test="${authoD=='D'||authoF=='F'}">小组明细</c:if></b>
 							</td>
 						</tr>
 						<tr>
@@ -68,7 +69,7 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 									截止日期
 									<input size=10 type="text" name="enddate" id="enddate" class="Wdate" value="${enddate}" onClick="WdatePicker()" >							
 								     -->
-									<c:if test="${authoA=='A'||authoE=='E'||authoC=='C'||authoB=='B'}">
+									<c:if test="${authoA=='A'||authoE=='E'||authoC=='C'||authoB=='B'||authoG=='G'}">
 									小组
 									<select id="zu" name="zu" style="width: 120px">
 										<option value="11">全部</option>
@@ -82,9 +83,14 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 									<input style="width: 70px" type="text" name="name" id="name" value="${strtemp}"/>
 										
 								
-									<input type="submit" value="查询"/>
-								   <input type="button" value="导出" onclick="expressout()"/>
-									
+									<input type="submit" value="查询"/>&nbsp;&nbsp;&nbsp;
+									<c:if test="${authoA=='A'||authoE=='E'||authoC=='C'||authoB=='B'||authoG=='G'}">
+                                                                                                 起始日期					
+									<input size=10 type="text" name="begindate" id="begindate" class="Wdate"  onClick="WdatePicker()" >
+									截止日期
+									<input size=10 type="text" name="enddate" id="enddate" class="Wdate"  onClick="WdatePicker()" >								      
+								       <input type="button" value="导出" onclick="expressout()"/>
+									</c:if>	
 							</div></td>	
 						</tr>
 						<tr height="50px" class="表格表头背景1" id="hang">

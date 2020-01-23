@@ -61,6 +61,7 @@ function frame(o)
 	var authoD = document.getElementById("authoD").value;
 	var authoE = document.getElementById("authoE").value;
 	var authoF = document.getElementById("authoF").value;
+	var authoG = document.getElementById("authoG").value;
 	var id = document.getElementById("id").value;									
 	var obj = " ";
 	obj=o;
@@ -151,7 +152,12 @@ function frame(o)
 			document.getElementById("frame").src="<%=path%>/showjiediaodata.action";
 	
 	}
+		else if(obj=="onduty_data")
+	{
+		
+			document.getElementById("frame").src="<%=path%>/showondutydata.action";
 	
+	}
 
 
 	
@@ -245,19 +251,22 @@ $(document).ready(function(){
 								
 									</c:if>
 								   <li class="cc"  onclick="frame('all_data')">处室人员分布一栏</li>	
-									<c:if test="${authoA=='A'||authoB=='B'||authoC=='C'||authoE=='E'}">
+									<c:if test="${authoA=='A'||authoB=='B'||authoC=='C'||authoE=='E'||authoG=='G'}">
                                    						
 									<li class="cc"  onclick="frame('chu_data')">处室人员本周明细</li>
 									</c:if>
 									<c:if test="${authoF=='F'||authoD=='D'}">
 									<li class="cc"  onclick="frame('zu_data')">小组人员本周明细</li>
 									</c:if>
-									<c:if test="${authoF=='F'||authoD=='D'||authoE=='E'}">
+									<c:if test="${authoF=='F'||authoD=='D'||authoE=='E'||authoG=='G'}">
 									<li class="cc"  onclick="frame('person_data')">员工本人明细</li>
 									</c:if>
 									<c:if test="${authoD=='D'}">
 									<li class="cc"  onclick="frame('leave_modify')">休假信息维护</li>
 									</c:if>
+									
+									<li class="cc"  onclick="frame('onduty_data')">消防安全值班信息</li>
+								
 									<c:if test="${authoE=='E'}">
 									<li class="cc"  onclick="frame('jiediao_modify')">借调信息维护</li>
 									</c:if>
@@ -297,7 +306,7 @@ $(document).ready(function(){
 				<div style="overflow:hidden">
 					<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
 					<div class="b d1 k3">
- 			       <c:if test="${authoA=='A'||authoB=='B'||authoC=='C'||authoD=='D'||authoE=='E'}">
+ 			       <c:if test="${authoA=='A'||authoB=='B'||authoC=='C'||authoD=='D'||authoE=='E'||authoG=='G'}">
 						<iframe id="frame" class="mainpage"	src="<%=path%>/showalldata.action" marginwidth='0' marginheight='0' frameborder='0'></iframe>
 					</c:if>	
 					  <c:if test="${authoF=='F'}">
@@ -312,6 +321,7 @@ $(document).ready(function(){
 						<input type="hidden" id="authoD" value="${authoD}"/>
 						<input type="hidden" id="authoE" value="${authoE}"/>
 						<input type="hidden" id="authoF" value="${authoF}"/>
+						<input type="hidden" id="authoG" value="${authoG}"/>
 						
 					
 						

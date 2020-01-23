@@ -188,6 +188,7 @@ public class UserLogin extends ActionSupport implements ServletResponseAware{
         	  ActionContext.getContext().getSession().put("authoD",u.getAuthority().substring(3,4));
         	  ActionContext.getContext().getSession().put("authoE",u.getAuthority().substring(4,5));
         	  ActionContext.getContext().getSession().put("authoF",u.getAuthority().substring(5,6));
+        	  ActionContext.getContext().getSession().put("authoG",u.getAuthority().substring(6,7));
         	  
         	  config.setValue(config.getValue()+1);
         	  ActionContext.getContext().getSession().put("views",config.getValue());

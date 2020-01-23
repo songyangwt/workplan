@@ -3,40 +3,53 @@ package train.wctj.action;
 import java.util.ArrayList;
 import java.util.List;
 
-import train.mycalendar.dao.CalendarDAO;
-import train.mycalendar.pojo.Calendar;
-import train.userinfo.dao.UserInfoDAO;
-import train.userinfo.pojo.UserInfo;
-import train.util.DateUtil;
-import train.wctj.dao.WorkDataDAO;
-import train.wctj.pojo.WorkData;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import train.mycalendar.dao.CalendarDAO;
+import train.mycalendar.pojo.Calendar;
+import train.userinfo.dao.UserInfoDAO;
+import train.userinfo.pojo.UserInfo;
+import train.util.DateUtil;
+import train.wctj.dao.WorkDataDAO;
+import train.wctj.pojo.OnDuty;
+import train.wctj.pojo.WorkData;
 import ccb.hibernate.HibernateSessionFactory;
 
-public class ShowChuWctj {
-	private static final Log log = LogFactory.getLog(WorkData.class);
-	private String newnumber;// 新一代员工编号
-	private List<WorkData> list;
+public class ShowOnDutyData {
 	
-	private String authoA;
-	private String authoB;
-	private String authoC;
-	private String authoD;
-	private String authoE;
-	private String authoF;
-	private String authoG;
+	private static final Log log = LogFactory.getLog(WorkData.class);
+	
+	private List<OnDuty> list;
+	private String begindate;
+	private String enddate;
 	private String name;
 	
 	private String strtemp;
 	private int zhuan;
-	private int zu;
 	
+	
+	public String getBegindate() {
+		return begindate;
+	}
+
+	public void setBegindate(String begindate) {
+		this.begindate = begindate;
+	}
+
+	public String getEnddate() {
+		return enddate;
+	}
+
+	public void setEnddate(String enddate) {
+		this.enddate = enddate;
+	}
+
+
+
 	/**
 	* 获得默认的分页大小
 	*/
@@ -75,32 +88,7 @@ public class ShowChuWctj {
 	private long totalRows = -1;
 	
 	
-	public String getAuthoG() {
-		return authoG;
-	}
-
-	public void setAuthoG(String authoG) {
-		this.authoG = authoG;
-	}
-
-	public String getNewnumber() {
-		return newnumber;
-	}
-
-	public void setNewnumber(String newnumber) {
-		this.newnumber = newnumber;
-	}
-
 	
-	
-
-	public String getAuthoF() {
-		return authoF;
-	}
-
-	public void setAuthoF(String authoF) {
-		this.authoF = authoF;
-	}
 
 	public int getPageSize() {
 		return pageSize;
@@ -167,61 +155,7 @@ public class ShowChuWctj {
 	}
 
 
-	public List<WorkData> getList() {
-		return list;
-	}
-
-	public void setList(List<WorkData> list) {
-		this.list = list;
-	}
-
-	public String getAuthoA() {
-		return authoA;
-	}
-
-	public void setAuthoA(String authoA) {
-		this.authoA = authoA;
-	}
-
-	public String getAuthoB() {
-		return authoB;
-	}
-
-	public void setAuthoB(String authoB) {
-		this.authoB = authoB;
-	}
-
-	public String getAuthoC() {
-		return authoC;
-	}
-
-	public void setAuthoC(String authoC) {
-		this.authoC = authoC;
-	}
-
-	public String getAuthoD() {
-		return authoD;
-	}
-
-	public void setAuthoD(String authoD) {
-		this.authoD = authoD;
-	}
-
-	public String getAuthoE() {
-		return authoE;
-	}
-
-	public void setAuthoE(String authoE) {
-		this.authoE = authoE;
-	}
-
-	public int getZu() {
-		return zu;
-	}
-
-	public void setZu(int zu) {
-		this.zu = zu;
-	}
+	
 
 	public static Log getLog() {
 		return log;
@@ -254,43 +188,27 @@ public class ShowChuWctj {
 
 	
 
+	public List<OnDuty> getList() {
+		return list;
+	}
+
+	public void setList(List<OnDuty> list) {
+		this.list = list;
+	}
+
 	public String execute() throws Exception
 	{
 		String result = "success";
-		UserInfoDAO uidao = new UserInfoDAO();
-		UserInfo ui = new UserInfo();
 		
-		WorkDataDAO wddao= new WorkDataDAO();
-		WorkData wd = new WorkData();
-		Query query;
 		String hql = "";
-		String bd = "";
-		String ed = "";
+		Query query;
 		String un = "";
 		
 		Session session = HibernateSessionFactory.getSession();
 		Transaction trans = session.beginTransaction();
 		try {
-			ui = uidao.findByNewNumber(newnumber);
 			
-			wd = wddao.findByNewNumber(newnumber);
-			authoA = ui.getAuthority().substring(0, 1);
-			authoB = ui.getAuthority().substring(1, 2);
-			authoC = ui.getAuthority().substring(2, 3);
-			authoD = ui.getAuthority().substring(3, 4);
-			authoE = ui.getAuthority().substring(4, 5);
-			authoF = ui.getAuthority().substring(5, 6);
-			authoG = ui.getAuthority().substring(6, 7);
-			CalendarDAO mcdao = new CalendarDAO();
-		 	DateUtil du = new DateUtil();
-			String datetoday = du.getDateNow();
-			List<String> date = new ArrayList();
-			Calendar mc = mcdao.findByDate(datetoday);
-			date = mcdao.DateInList(mc);
-			String datebegin = date.get(0);
-		    int length = date.size();
-		    String dateend = date.get(length-1);
-			hql = "from WorkData as wd where 1=1";
+			hql = "from OnDuty as wd where 1=1";
 			if(name!=null&&zhuan==1)
 			{
 				strtemp = new String(name.getBytes("ISO8859-1"),"UTF-8");
@@ -299,44 +217,20 @@ public class ShowChuWctj {
 			{
 				strtemp = name;
 			}
-			un = uidao.nameToNewnumbernull(strtemp);
+			un = strtemp;
 			if(un!=null&&!un.equals(""))
 			{
-				hql +="  and wd.newnumber like '%"+un+"%'";
+				hql +="  and wd.name like '%"+un+"%'";
 			}
 			
-		
-		    hql += " and wd.date>='"+datebegin+"' and wd.date<='"+dateend+"'";
-			
-			if((authoA!=null&&authoA.equals("A"))||(authoE!=null&&authoE.equals("E"))||(authoB!=null&&authoB.equals("B"))||(authoC!=null&&authoC.equals("C"))||(authoG!=null&&authoG.equals("G")))
+			if(begindate!=null&&!begindate.equals("")&&enddate!=null&&!enddate.equals(""))
 			{
-				if(zu!=0)
-				{
-					if(zu==11)
-					{
-						hql += " and wd.zu in (1,2,3,4)";
-					}
-					
-					else
-					{
-						
-						hql+=" and wd.zu='"+zu+"'";
-						
-					}
-				}
-				else
-				{
-					hql += " and wd.zu in (1,2,3,4)";
-				}
+				String bd = begindate.replaceAll("-", "");
+				String ed = enddate.replaceAll("-", ""); 
+				hql += " and wd.date>='"+bd+"' and wd.date<='"+ed+"'";
 			}
-		
-			else if(authoD!=null&&authoD.equals("D"))
-			{
-				    zu=ui.getZu();			
-					hql+=" and wd.zu='"+zu+"'";			
-			}
+		  
 			
-		
 				
 			hql += " order by wd.id desc";
 			System.out.println(hql);
@@ -381,4 +275,5 @@ public class ShowChuWctj {
 
 			lastPage = totalPages;
 		}
+
 }
